@@ -1,33 +1,27 @@
 import { Injectable, NgZone, EventEmitter } from '@angular/core';
+import { YT } from '../../youtube-player/models/youtube';
 
 const $window: any = window;
 
 @Injectable()
 export class YoutubePlayerService {
-  public player: any;
+  public player: YT.Player;
 
   constructor(private zone: NgZone) { }
 
-  createPlayer(domElementId: string, videoId: string, playerDim: any, playerOptions: any, playerReady: any) {
+  createPlayer(domElementId: string, playerOptions: YT.PlayerOptions, readyEvent: EventEmitter<YT.Player>) {
     return setInterval(() => {
       if ((typeof $window.YT !== 'undefined') && $window.YT && $window.YT.Player) {
         this.player = new $window.YT.Player(domElementId, {
-          height: playerDim.height,
-          width: playerDim.width,
-          videoId: videoId,
+          ...playerOptions,
           events: {
-            onReady: (ev: any) => {
+            onReady: (ev: YT.PlayerEvent) => {
               this.zone.run(() =>
-                playerReady && playerReady.emit(ev.target));
-            },
-            onStateChange: this.onPlayerStateChange
+                readyEvent && readyEvent.emit(ev.target));
+            }
           }
         });
       }
     }, 100);
-  }
-
-  onPlayerStateChange = ($event) => {
-    console.log($event);
   }
 }

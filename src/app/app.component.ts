@@ -6,17 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-
-  videoId = 'YAkgqiyBOrQ';
-
-  constructor() {
-    this.videoId = '';
-
-    setTimeout(() => {
-
-    }, 1000);
-  }
+  videoId = '';
 
   setupPlayer = (player) => {
     player.loadVideoById('YAkgqiyBOrQ');

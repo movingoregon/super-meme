@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { YoutubePlayerService } from './common/services/youtube-player.service';
   imports: [
     BrowserModule
   ],
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
   providers: [YoutubePlayerService],
   bootstrap: [AppComponent]
 })
