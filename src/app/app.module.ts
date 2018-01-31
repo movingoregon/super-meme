@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
+import { YoutubePlayerService } from './common/services/youtube-player.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    YoutubePlayerComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [YoutubePlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

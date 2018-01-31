@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  videoId = 'YAkgqiyBOrQ';
+
+  constructor() {
+    this.videoId = '';
+
+    setTimeout(() => {
+
+    }, 1000);
+  }
+
+  setupPlayer = (player) => {
+    player.loadVideoById('YAkgqiyBOrQ');
+  }
 }
