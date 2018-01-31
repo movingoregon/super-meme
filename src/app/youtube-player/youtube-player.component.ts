@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, AfterContentInit, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { YoutubePlayerService } from '../common/services/youtube-player.service';
+import { YoutubePlayerService } from './services/youtube-player.service';
 import { YT } from './models/youtube';
 const domEleId = 'player';
 
@@ -14,27 +14,24 @@ export class YoutubePlayerComponent implements AfterContentInit {
   @Input() width: number;
   @Input() playerParams: YT.PlayerVars;
 
-  @Output() ready = new EventEmitter<YT.Player>();
+  @Output() playerReadyEvent = new EventEmitter<YT.Player>();
+  @Output() playerStateChangeEvent = new EventEmitter<YT.PlayerState>();
 
   constructor(private playerService: YoutubePlayerService) { }
 
   ngAfterContentInit() {
-    const doc = window.document;
-    const playerApi = doc.createElement('script');
-    playerApi.type = 'text/javascript';
-    playerApi.src = 'http://www.youtube.com/iframe_api';
-    doc.body.appendChild(playerApi);
-
     const playerOptions: YT.PlayerOptions = {
-      videoId: this.videoId,
-      height: this.height,
-      width: this.width,
+      videoId: this.videoId || '',
+      height: this.height || 300,
+      width: this.width || 300,
       playerVars: {
+        ...this.playerParams,
         autoplay: 0,
-        color: 'red',
         enablejsapi: 1
       }
     };
-    this.playerService.createPlayer(domEleId, playerOptions, this.ready);
+
+    this.playerService.loadPlayerApi();
+    this.playerService.createPlayer(domEleId, playerOptions, this.playerReadyEvent, this.playerStateChangeEvent);
   }
 }

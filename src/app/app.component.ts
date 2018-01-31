@@ -11,4 +11,8 @@ export class AppComponent {
   setupPlayer = (player) => {
     player.loadVideoById('YAkgqiyBOrQ');
   }
+
+  playerStateChange = (event) => {
+    console.log(event);
+  }
 }

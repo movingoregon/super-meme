@@ -3,19 +3,17 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 
 
 import { AppComponent } from './app.component';
-import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
-import { YoutubePlayerService } from './common/services/youtube-player.service';
+import { YouTubePlayerModule } from './youtube-player/youtube-player.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    YoutubePlayerComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    YouTubePlayerModule
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
-  providers: [YoutubePlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

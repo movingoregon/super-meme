@@ -1,3 +1,4 @@
-<app-youtube-player [videoId]="videoId" [height]="300" [width]="300" [playerParams]="{}" (ready)="setupPlayer($event)">
+<app-youtube-player [videoId]="videoId" [height]="300" [width]="300" [playerParams]="{}" (playerReadyEvent)="setupPlayer($event)"
+    (playerStateChangeEvent)="playerStateChange($event)">
 
 </app-youtube-player>
