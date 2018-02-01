@@ -1,1 +1,1 @@
-export * from './src/app/app.module';
+export * from './src/app/youtube-player/youtube-player.module';
