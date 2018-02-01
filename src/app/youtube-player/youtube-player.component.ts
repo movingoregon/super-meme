@@ -4,7 +4,7 @@ import { YT } from './models/youtube';
 const domEleId = 'player';
 
 @Component({
-  selector: 'app-youtube-player',
+  selector: 'ng5-youtube-player',
   templateUrl: './youtube-player.component.html',
   styleUrls: []
 })

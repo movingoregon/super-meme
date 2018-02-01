@@ -6,7 +6,7 @@
 * [Download](#download)
 
 ## Description
-`ng5-yt-player` is component developed using angular 5 and youtube iframe_api. 
+`ng5-yt-player` is a component developed using angular 5 and youtube iframe_api. 
 
 ## Usage
 
@@ -46,9 +46,9 @@ export class AppModule { }
 ```
 
 ```HTML
-<app-youtube-player [videoId]="videoId" [height]="300" [width]="300" [playerParams]="{}" 
+<ng5-youtube-player [videoId]="videoId" [height]="300" [width]="300" [playerParams]="{}" 
     (playerReadyEvent)="setupPlayer($event)" (playerStateChangeEvent)="playerStateChange($event)">
-</app-youtube-player>
+</ng5-youtube-player>
 
 ```
 ## Events
