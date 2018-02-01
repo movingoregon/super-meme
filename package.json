@@ -1,6 +1,6 @@
 {
   "name": "ng5-yt-player",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -11,6 +11,15 @@
     "e2e": "ng e2e",
     "packagr": "ng-packagr -p ng-package.json"
   },
+  "keywords": [
+    "youtube",
+    "iframe",
+    "player",
+    "api",
+    "promise",
+    "async",
+    "video"
+  ],
   "private": false,
   "dependencies": {
     "@angular/animations": "^5.0.0",

@@ -1,27 +1,66 @@
-# 
+# YouTube Player
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
+* [Description](#Description)
+* [Usage](#usage)
+* [Events](#Events)
+* [Download](#download)
 
-## Development server
+## Description
+`ng5-yt-player` is component developed using angular 5 and youtube iframe_api. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+```js
+/**
+ * @typedef options
+ * @see https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
+ * @param {Number} width
+ * @param {Number} height
+ * @param {String} videoId
+ * @param {Object} playerParams
+ * @param {Object} playerReadyEvent
+ * @param {Object} playerStateChangeEvent
+ */
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+/**
+ * @typedef YT.Player
+ * @see https://developers.google.com/youtube/iframe_api_reference
+ * */
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+import { YouTubePlayerModule } from 'ng5-yt-player';
 
-## Running unit tests
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    YouTubePlayerModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
 
-## Running end-to-end tests
+```HTML
+<app-youtube-player [videoId]="videoId" [height]="300" [width]="300" [playerParams]="{}" 
+    (playerReadyEvent)="setupPlayer($event)" (playerStateChangeEvent)="playerStateChange($event)">
+</app-youtube-player>
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+## Events
+* `playerReadyEvent` - event emitter is used to listen player ready event and it provies an instance of player  `YT.Player`.
+* `playerStateChangeEvent` - event emitter is used to listen player State Change Events, such as `Play`, `Pause`.
+  * `Play`- 1
+  * `Pause` - 2
 
-## Further help
+## Download
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Using [NPM](https://www.npmjs.org/):
+
+```sh
+ npm install ng5-yt-player --save
+```
