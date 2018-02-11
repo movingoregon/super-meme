@@ -26,7 +26,6 @@ export class YoutubePlayerComponent implements AfterContentInit {
       width: this.width || 300,
       playerVars: {
         ...this.playerParams,
-        autoplay: 0,
         enablejsapi: 1
       }
     };
